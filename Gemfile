@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
 
+gem 'devise', '3.4.1'
+gem 'bootstrap-sass'
+gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 
