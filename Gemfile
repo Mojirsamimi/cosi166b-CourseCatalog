@@ -6,6 +6,7 @@ gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
+gem 'json'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
