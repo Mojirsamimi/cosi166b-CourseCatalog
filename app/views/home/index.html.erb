@@ -1,0 +1,13 @@
+<% header "User Profile" %>
+
+
+  <div class="row">   	
+    <div class="col-sm-4">First Name: <%= @curr_user.firstname%></div>
+    <div class="col-sm-4">Last Name: <%= @curr_user.lastname%></div>   
+  </div>
+  <div class="row">   	
+    <div class="col-sm-4">Email: <%= @curr_user.email%></div>
+  
+  </div>
+  
+<%= link_to "Back", :back, class: 'btn btn-default btn-sm' %>
