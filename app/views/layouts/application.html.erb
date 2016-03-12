@@ -13,12 +13,14 @@
       <%= link_to 'Course Catalog', root_path, class: 'navbar-brand' %>
     </div>
     <div id="navbar">
+    	<% if user_signed_in? %>
       <ul class="nav navbar-nav">
         <li><%= link_to 'Home', root_path %></li>
-         <li><%= link_to 'Instructor', instructors_path %></li>
-          <li><%= link_to 'Course', courses_path %></li>
-          <li><%= link_to 'Subject', subjects_path %></li>
+         <li><%= link_to 'Instructors', instructors_path %></li>
+          <li><%= link_to 'Courses', courses_path %></li>
+          <li><%= link_to 'Subjects', subjects_path %></li>
       </ul>
+      <%end%>
       <ul class="nav navbar-nav pull-right">
         <% if user_signed_in? %>
           <li class="dropdown">
