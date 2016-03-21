@@ -11,9 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311024928) do
+ActiveRecord::Schema.define(version: 20160321101233) do
 
-  create_table "courses", force: :cascade do |t|
+  create_table "courses", id: false, force: :cascade do |t|
+    t.string   "id"
     t.string   "name"
     t.text     "description"
     t.string   "code"
@@ -24,7 +25,31 @@ ActiveRecord::Schema.define(version: 20160311024928) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "instructors", force: :cascade do |t|
+  create_table "courses_subjects", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "subject_id"
+    t.string   "course_id"
+  end
+
+  add_index "courses_subjects", ["course_id"], name: "index_courses_subjects_on_course_id"
+  add_index "courses_subjects", ["subject_id"], name: "index_courses_subjects_on_subject_id"
+
+  create_table "enrollments", force: :cascade do |t|
+    t.integer  "year"
+    t.string   "semester"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.string   "course_id"
+  end
+
+  add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id"
+  add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id"
+
+  create_table "instructors", id: false, force: :cascade do |t|
+    t.string   "id"
     t.string   "first"
     t.string   "middle"
     t.string   "last"
@@ -34,7 +59,8 @@ ActiveRecord::Schema.define(version: 20160311024928) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "subjects", force: :cascade do |t|
+  create_table "subjects", id: false, force: :cascade do |t|
+    t.string   "id"
     t.string   "name"
     t.string   "abbreviation"
     t.text     "comment"

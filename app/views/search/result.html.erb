@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+	<%= link_to 'Change Search Criteria', search_index_path %>
+	<h1>Search Result</h1>
+<%if @courses.size==0%>
+<p>No result found</p>
+<%else%>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Code</th>
+      <th>Credits</th>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.description %></td>
+        <td><%= course.code %></td>
+        <td><%= course.credits %></td>
+        <%if is_enrolled(course.id)%>
+        <td>Enrolled</td>
+        <%else%>
+        <td><%= link_to 'Enroll', enroll_course_path(course) %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>
+<br>
+
+
