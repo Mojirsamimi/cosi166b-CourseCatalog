@@ -12,6 +12,7 @@ Subject.delete_all
 Instructor.delete_all
 Course.delete_all
 Courses_subject.delete_all
+Enrollment.delete_all
 
 File.open(File.join(Rails.root, 'db/json', 'dataset.json'), "r").each_line do |line|
   jsn = JSON.parse(line)
