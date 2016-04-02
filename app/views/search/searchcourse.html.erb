@@ -1,0 +1,30 @@
+<div class="row">
+<%= form_tag(search_dosearchcourse_path, method: "get", remote: true, role: "form", class: "form", id: "searchform" ) do %>
+<div class"row">
+	<div class="col-sm-5">
+		<div class="form-group">
+			<label class="control-label">Subject</label>
+			<%= select_tag :subject, options_from_collection_for_select(@subjects, 'id', 'name_and_id'),prompt: "Select Subject...",:class=>"form-control"%>
+		</div>
+	</div>
+	<div class="col-sm-5">
+		<div class="form-group">
+			<label class="control-label">Course</label>
+			<%= text_field_tag(:course,"", class: "form-control",:placeholder=>"Type a course name...") %>
+		</div>
+	</div>
+	
+</div>
+<% end %>
+</div>
+<div class="row">
+	<div id="search_results"></div>
+</div>
+
+<script>
+$(function() {
+   $(".form-control").change(function() {
+     $("form").submit();
+   });
+ });
+</script>

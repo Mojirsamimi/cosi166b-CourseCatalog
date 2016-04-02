@@ -24,8 +24,10 @@ File.open(File.join(Rails.root, 'db/json', 'dataset.json'), "r").each_line do |l
     new_crs.save
     subj=jsn['subjects']
     subj.each do |s|
-      cs=Courses_subject.create(subject_id: s['id'],course_id: jsn['id'])
-      cs.save
+      if Courses_subject.where(subject_id: s['id'],course_id: jsn['id']).size==0     
+        cs=Courses_subject.create(subject_id: s['id'],course_id: jsn['id'])
+        cs.save
+      end
     end
   elsif jsn['type']=="instructor"
     new_ins=Instructor.create(id: jsn['id'],first: jsn['first'],middle: jsn['middle'], last: jsn['last'],email: jsn['email'],comment: jsn['comment'])
